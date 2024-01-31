@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import "../../css/cart.css"
-
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css"; // Стили Slick
+import "slick-carousel/slick/slick-theme.css";
 
 
 const Cart = () =>{
@@ -12,7 +14,7 @@ const Cart = () =>{
                 const authAxios = axios.create({
                     baseURL: 'https://unofficial-shein.p.rapidapi.com',
                     params: {
-                        cat_id: "4328",
+                        cat_id: "1980",
                         adp: '10170797',
                         language: 'en',
                         country: 'US',
@@ -30,7 +32,7 @@ const Cart = () =>{
                     const response = await authAxios.get('https://unofficial-shein.p.rapidapi.com/products/list')
                     const result = response.data
                     console.log(response.data)
-                    setproducts(response.data)
+                    setproducts(response.data.info.products)
                     return result
                 } catch (err){
                     console.log(err)
@@ -38,17 +40,32 @@ const Cart = () =>{
             }
             getTabs()
         },[])
-    return(
-        <section className='products'>
-            {products.info?.products.map((list) => (
-                <div className='product_list'>
-                    <p>{list.cate_name}</p>
-                    <img src={list.goods_img} alt={list.goods_name} />
-                </div>
-            ))} 
-        </section>
-        
-    )
-}
-
-export default Cart;
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 3
+        };
+   
+        return (
+            <section className='products'>
+                {products.map((product) => (
+                    <div className='product_list' key={product.goods_id}>
+                        <p>{product.goods_name}</p>
+                        {product.detail_image && (
+                            <Slider {...settings}>
+                                {product.detail_image.map((image, index) => (
+                                    <div key={index}>
+                                        <img src={image} alt={`Product ${product.goods_id} Detail ${index}`} />
+                                    </div>
+                                ))}
+                            </Slider>
+                        )}
+                    </div>
+                ))}
+            </section>
+        );
+    };
+    
+    export default Cart;
