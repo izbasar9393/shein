@@ -12,7 +12,7 @@ const Cart = () =>{
         useEffect(()=>{
             async function getTabs(){
                 const authAxios = axios.create({
-                    baseURL: 'https://unofficial-shein.p.rapidapi.com',
+                    baseURL: 'https://rapidapi.com/apidojo/api/unofficial-shein',
                     params: {
                         cat_id: "1980",
                         adp: '10170797',
@@ -24,7 +24,7 @@ const Cart = () =>{
                         page: '1'
                       },
                       headers: {
-                        'X-RapidAPI-Key': '31823104c0mshc77c5283b621682p163aa9jsn1ad1cd59de88',
+                        'X-RapidAPI-Key': 'db7f709b59mshc2e8158b2956278p15b5dajsn303e3d77b204',
                         'X-RapidAPI-Host': 'unofficial-shein.p.rapidapi.com'
                       }
                 })
@@ -47,7 +47,7 @@ const Cart = () =>{
             slidesToShow: 1,
             slidesToScroll: 3
         };
-   
+
         return (
             <section className='products'>
                 {products.map((product) => (
@@ -67,5 +67,5 @@ const Cart = () =>{
             </section>
         );
     };
-    
+
     export default Cart;

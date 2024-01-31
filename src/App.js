@@ -14,14 +14,14 @@ function App() {
         useEffect(()=>{
             async function getTabs(){
                 const authAxios = axios.create({
-                    baseURL: 'https://unofficial-shein.p.rapidapi.com',
+                    baseURL: 'https://rapidapi.com/apidojo/api/unofficial-shein',
                     params: {
                         language: 'en',
                         country: 'US',
                         currency: 'USD'
                       },
                       headers: {
-                        'X-RapidAPI-Key': '31823104c0mshc77c5283b621682p163aa9jsn1ad1cd59de88',
+                        'X-RapidAPI-Key': 'db7f709b59mshc2e8158b2956278p15b5dajsn303e3d77b204',
                         'X-RapidAPI-Host': 'unofficial-shein.p.rapidapi.com'
                       }
                 })
