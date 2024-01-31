@@ -1,0 +1,20 @@
+.products .product_list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.products{
+    display: grid;
+    padding: 10px 50px 10px 50px;
+    grid-template-columns: repeat(5, 1fr);
+}
+.products .product_list p {
+    height: 50px;
+    text-align: center;
+}
+
+.products .product_list img{
+    height: 250px;
+    width: 190px;
+}

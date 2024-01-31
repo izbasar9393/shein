@@ -3,7 +3,7 @@
     padding: 0;
     text-decoration: none;
 }
-body{
+.header_container{
     background-color: rgb(240, 240, 240);
 }
 ul, a, li, button {
